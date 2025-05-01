@@ -6,5 +6,4 @@ class URLCreate(BaseModel):
 
 
 class URLResponse(BaseModel):
-    original_url: HttpUrl
     short_url: str

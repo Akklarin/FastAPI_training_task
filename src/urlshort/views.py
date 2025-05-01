@@ -1,12 +1,10 @@
-from fastapi import APIRouter, Depends, status, HTTPException
+from fastapi import APIRouter, status, HTTPException
 from fastapi.responses import RedirectResponse
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from .models import Urls
 from .schemas import URLCreate, URLResponse
 from .dependencies import SessionDep
 from .service import generate_short_code
-from src.database import get_session
 
 urlshort_router = APIRouter()
 
@@ -46,5 +44,3 @@ async def redirect_to_original(short_url: str, db: SessionDep):
         raise HTTPException(status_code=404, detail="Short URL not found")
 
     return RedirectResponse(url=url_entry.original_url, status_code=307)
-
-

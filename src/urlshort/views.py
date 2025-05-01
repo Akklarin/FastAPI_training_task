@@ -2,7 +2,7 @@ from fastapi import APIRouter, status, HTTPException
 from fastapi.responses import RedirectResponse
 from .schemas import URLCreate, URLResponse
 from .dependencies import SessionDep
-from .service import generate_short_code
+from .utils import generate_short_code
 from .crud import get_url_by_short_code, create_url
 
 urlshort_router = APIRouter()

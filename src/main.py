@@ -4,7 +4,12 @@ from src.urlshort.config import settings
 from src.init_db import init_db
 import uvicorn
 
-app = FastAPI()
+app = FastAPI(
+    title=settings.PROJECT_TITLE,
+    description=settings.PROJECT_DESCRIPTION,
+    docs_url=settings.PROJECT_DOCS_URL
+    )
+
 app.include_router(main_router)
 
 

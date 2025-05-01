@@ -9,7 +9,7 @@ from .service import generate_short_code
 urlshort_router = APIRouter()
 
 
-@urlshort_router.post("/", response_model=URLResponse, status_code=status.HTTP_201_CREATED)
+@urlshort_router.post("/", response_model=URLResponse, status_code=status.HTTP_201_CREATED, tags=["URL Shortener"])
 async def create_short_url(url_data: URLCreate, db: SessionDep):
     while True:
         short_code = generate_short_code()
@@ -33,7 +33,7 @@ async def create_short_url(url_data: URLCreate, db: SessionDep):
     }
 
 
-@urlshort_router.get("/{short_url}")
+@urlshort_router.get("/{short_url}", tags=["URL Shortener"])
 async def redirect_to_original(short_url: str, db: SessionDep):
     result = await db.execute(
         select(Urls).where(Urls.short_url == short_url)

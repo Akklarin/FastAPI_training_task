@@ -13,7 +13,6 @@ urlshort_router = APIRouter()
 
 @urlshort_router.post("/", response_model=URLResponse, status_code=status.HTTP_201_CREATED)
 async def create_short_url(url_data: URLCreate, db: SessionDep):
-    # Генерация уникального короткого кода
     while True:
         short_code = generate_short_code()
         result = await db.execute(select(Urls).where(Urls.short_url == short_code))

@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from schemas import URLRequest
-from dependencies import SessionDep
+from .schemas import URLRequest
+from .dependencies import SessionDep
 
 urlshort_router = APIRouter()
 

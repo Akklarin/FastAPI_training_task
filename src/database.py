@@ -1,3 +1,9 @@
+"""Database setup for the FastAPI URL Shortener project.
+
+This module configures the asynchronous SQLAlchemy engine, sessionmaker, and
+base declarative class for use throughout the application.
+"""
+
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 from src.urlshort.config import get_db_url
@@ -12,5 +18,6 @@ Base = declarative_base()
 
 
 async def get_session() -> AsyncSession:
+    """Provides a scoped asynchronous database session."""
     async with AsyncSessionLocal() as session:
         yield session

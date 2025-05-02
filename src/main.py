@@ -1,3 +1,9 @@
+"""Main application entry point for the FastAPI URL Shortener project.
+
+This module initializes the FastAPI app with configuration settings,
+includes the API router, and starts the Uvicorn server if run as the main program.
+"""
+
 from fastapi import FastAPI
 from src.api import main_router
 from src.urlshort.config import settings

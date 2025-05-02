@@ -1,3 +1,5 @@
+"""Configuration module for the URL Shortener project."""
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
